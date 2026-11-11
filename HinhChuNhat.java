@@ -1,58 +1,53 @@
-package Tuan1_baiHCN;
+package tuan1;
 
 public class HinhChuNhat {
-    private double chieudai;
-    private double chieurong;
+    //Khai bao thuoc tinh
+    private double chieuDai;
+    private double chieuRong;
+    public double getChieuDai() {
 
+        return chieuDai;
+    }
+    public void setChieuDai(double DoDai) throws Exception {
+        if (DoDai>0) {
+            this.chieuDai = DoDai;
+        }else {
+            throw new Exception("DoDai>0");
+        }
+    }
+    public double getChieuRong() {
+        return chieuRong;
+    }
+
+    public void setChieuRong(double chieuRong) {
+        this.chieuRong = chieuRong;
+    }
+    //Tao ham khoi tao
+
+    public HinhChuNhat(double DoDai, double chieuRong) throws Exception{
+        if (DoDai>0) {
+            this.chieuDai = DoDai;
+        }else {
+            throw new Exception("DoDai>0");
+        }
+        this.chieuRong = chieuRong;
+    }
     public HinhChuNhat() {
-        this.chieudai = 0;
-        this.chieurong = 0;
     }
+    public double getDT() {
+        return this.chieuDai*getChieuRong();
 
-    public HinhChuNhat(double chieudai, double chieurong) {
-        this.chieudai = chieudai;
-        this.chieurong = chieurong;
     }
-
-    public double getChieudai() {
-        return chieudai;
-    }
-
-    public void setChieudai(double cD) throws Exception {
-        if (cD >= 0) {
-            this.chieudai = cD;
-        } else {
-            throw new Exception("Chiều dài không được âm");
-        }
-    }
-
-    public double getChieurong() {
-        return chieurong;
-    }
-
-    public void setChieurong(double chieurong) throws Exception {
-        if (chieurong >= 0) {
-            this.chieurong = chieurong;
-        } else {
-            throw new Exception("Chiều rộng không được âm");
-        }
-    }
-	public double getDT() {
-        return this.chieudai * this.chieurong;
-    
-    }
-
     public double getCV() {
-        return 2 * (this.chieudai + this.chieurong);
-    }
+        return (this.chieuDai+getChieuRong())/2;
 
-    public static void main(String[] args) {
-        HinhChuNhat h1= new HinhChuNhat(5, 3);
-        System.out.println(h1.getChieudai());
-        System.out.println(h1.chieurong);
-        System.out.println("Chu vi hình chữ nhật là:");
-        System.out.println(h1.getCV());
-        System.out.println("Diện tích hình chữ nhật là:");
-        System.out.println(h1.getDT());
+    }
+    public static void main (String[] args) throws Exception {
+        HinhChuNhat h1=new HinhChuNhat(3,10);
+        //In thong tin
+        System.out.println("Chieu dai hinh chu nhat la: "+h1.chieuDai);
+        System.out.println("Chieu rong hinh chu nhat la: "+h1.chieuRong);
+        System.out.println("Dien tich HCN la: "+h1.getDT());
+        System.out.println("Chu vi HCN la: "+h1.getCV());
     }
 }
